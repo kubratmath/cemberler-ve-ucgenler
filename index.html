@@ -41,8 +41,8 @@
 </section>
 <div class="controls">
 <section class="card" aria-labelledby="controlsTitle"><h2 id="controlsTitle">Çemberleri Ayarla</h2><p class="helper">Yarıçapları ve merkezler arası uzaklığı sürgülerle değiştir. Üçgen çizimi anında güncellenir.</p>
-<div class="field"><div class="fieldhead"><label for="r1">🟢 1. çemberin yarıçapı (r₁)</label><output id="r1Out" for="r1">120 birim</output></div><input id="r1" type="range" min="50" max="170" value="120" step="1"><div class="range-ends"><span>50</span><span>170</span></div></div>
-<div class="field"><div class="fieldhead"><label for="r2">🔵 2. çemberin yarıçapı (r₂)</label><output id="r2Out" for="r2">120 birim</output></div><input id="r2" type="range" min="50" max="170" value="120" step="1"><div class="range-ends"><span>50</span><span>170</span></div></div>
+<div class="field"><div class="fieldhead"><label for="r1">🟢 1. çemberin yarıçapı (r₁)</label><output id="r1Out" for="r1">120 birim</output></div><input id="r1" type="range" min="1" max="10" value="6" step="1"><div class="range-ends"><span>50</span><span>170</span></div></div>
+<div class="field"><div class="fieldhead"><label for="r2">🔵 2. çemberin yarıçapı (r₂)</label><output id="r2Out" for="r2">120 birim</output></div><input id="r2" type="range" min="1" max="10" value=6" step="1"><div class="range-ends"><span>50</span><span>170</span></div></div>
 <div class="field"><div class="fieldhead"><label for="d">↔️ Merkezler arası uzaklık (d)</label><output id="dOut" for="d">160 birim</output></div><input id="d" type="range" min="20" max="300" value="160" step="1"><div class="range-ends"><span id="minDistance">20</span><span id="maxDistance">232</span></div></div>
 <div class="info" id="limitInfo">Çemberlerin iki noktada kesişmesi için |r₁ − r₂| &lt; d &lt; r₁ + r₂ koşulu sağlanır. Sürgü bu koşulu korur.</div>
 <h3 style="margin:24px 0 11px;color:var(--navy);font-size:14px">Örnek üçgenler</h3><div class="presets"><button class="btn" data-preset="scalene">Çeşitkenar</button><button class="btn" data-preset="isosceles">İkizkenar</button><button class="btn" data-preset="equilateral">Eşkenar</button></div><button id="reset" class="btn" style="width:100%;margin-top:12px">↻ Başlangıç değerlerine dön</button>
@@ -58,7 +58,7 @@
 <script>
 'use strict';
 const $ = id => document.getElementById(id);
-const state = {r1:120,r2:120,d:160,upper:true,labels:true};
+const state = {r1:6,r2:6,d:7,upper:true,labels:true};
 function attr(id, data){const el=$(id);for(const [key,value] of Object.entries(data))el.setAttribute(key,String(value));}
 function point(id,x,y){attr(id,{cx:x,cy:y});}
 function label(id,x,y){attr(id,{x,y});}
