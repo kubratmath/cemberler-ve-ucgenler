@@ -2,110 +2,1134 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#1E3A5F">
-<title>Çemberlerden Üçgenlere | Geometri Keşif Aracı</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çemberlerden Üçgenlere | Geometri Laboratuvarı</title>
+
 <style>
-:root{--navy:#1E3A5F;--teal:#26A69A;--orange:#FB8C00;--ink:#14213D;--green:#2E9E5B;--blue:#4D81CB;--grid:#c1d7e9}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#EEF3F8;background-image:linear-gradient(#7197bf1c 1px,transparent 1px),linear-gradient(90deg,#7197bf1c 1px,transparent 1px);background-size:20px 20px}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
-.shell{max-width:1300px;margin:0 auto;padding:30px 20px 45px}.heading{margin-bottom:23px}.eyebrow{color:var(--teal);font-size:12px;letter-spacing:.13em;font-weight:800;text-transform:uppercase}.heading h1{margin:5px 0 6px;color:var(--navy);font-size:clamp(26px,3.5vw,39px);letter-spacing:-.035em}.heading p{margin:0;color:#60738a;line-height:1.55}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,1fr);gap:20px;align-items:start}.card{background:#fff;border:1px solid #e0e8f0;border-radius:20px;box-shadow:0 12px 32px #1e3a5f12;padding:22px}.card h2{margin:0;color:var(--navy);font-size:19px}.section-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}.helper{color:#64748b;font-size:13px;line-height:1.6;margin:7px 0 18px}.graph{border:2px solid #d7e9e5;border-radius:17px;overflow:hidden;background:linear-gradient(#26a69a11 1px,transparent 1px),linear-gradient(90deg,#26a69a11 1px,transparent 1px),linear-gradient(140deg,#f7fcfa,#ebf4fb);background-size:22px 22px,22px 22px,auto}.graph svg{display:block;width:100%;height:auto}.legend{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0 12px;font-size:13px;font-weight:700;color:#465c74}.dot{width:11px;height:11px;border-radius:50%;display:inline-block;margin-right:5px}.status{font-size:13px;padding:11px 13px;background:#e9f8f3;border-radius:11px;color:#167268;line-height:1.5;font-weight:650}.btn{border:1px solid #d7e4ee;border-radius:11px;padding:9px 13px;background:#f0f5f9;color:var(--navy);font-size:13px;font-weight:800;transition:background .15s,transform .15s}.btn:hover{background:#dcefeb;transform:translateY(-1px)}.btn.active{background:var(--teal);border-color:var(--teal);color:white}.controls{display:flex;flex-direction:column;gap:20px}.field{margin:15px 0 23px}.fieldhead{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:12px}.field label{font-weight:800;font-size:14px}.field output{font-weight:850;background:#edf3f8;border-radius:8px;padding:5px 9px;color:var(--navy);white-space:nowrap}input[type=range]{width:100%;accent-color:var(--teal);cursor:pointer}.range-ends{display:flex;justify-content:space-between;color:#8191a1;font-size:11px;margin-top:2px}.info{padding:12px 13px;border-radius:12px;background:#f3f7fa;color:#54677c;font-size:12px;line-height:1.55}.presets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.presets .btn{padding:10px 7px;font-size:12px}.type-card{background:var(--navy);color:white;padding:18px;border-radius:15px;margin-top:14px}.type-card small{display:block;color:#b9d6e5;text-transform:uppercase;letter-spacing:.09em;font-weight:800}.type-card strong{display:block;font-size:22px;margin:7px 0}.type-card p{margin:0;color:#e0eff8;font-size:13px;line-height:1.55}.table{border-collapse:collapse;width:100%;margin-top:12px;font-size:14px}.table td{padding:12px 10px;border-bottom:1px solid #e9eef4}.table td:last-child{text-align:right;font-weight:800}.table tr:last-child td{border:0}.note{color:#63758b;font-size:12px;line-height:1.55;margin:12px 0 0}.toggle{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.shape-label{font-weight:800;font-size:16px;fill:var(--navy);stroke:white;stroke-width:4;paint-order:stroke;stroke-linejoin:round}.subtle{font-size:13px;fill:#466378;stroke:white;stroke-width:3;paint-order:stroke}.footer{text-align:center;color:#71849a;margin-top:20px;font-size:12px}@media(max-width:900px){.layout{grid-template-columns:1fr}}@media(max-width:500px){.shell{padding:19px 12px 30px}.card{padding:15px}.presets{grid-template-columns:1fr 1fr 1fr}.presets .btn{font-size:11px}.heading p{font-size:14px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+:root {
+  --navy: #1E3A5F;
+  --teal: #26A69A;
+  --blue: #447BC8;
+  --orange: #FB8C00;
+  --green: #2E9E5B;
+  --red: #D64545;
+  --ink: #14213D;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background-color: #EEF3F8;
+  background-image:
+    linear-gradient(rgba(70,120,180,.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70,120,180,.09) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 22px 34px;
+}
+
+header h1 {
+  font-size: 26px;
+  margin: 0 0 6px;
+}
+
+header p {
+  margin: 0;
+  color: #D7E7F3;
+  font-size: 14px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(310px, 1fr);
+  gap: 22px;
+  padding: 24px;
+  max-width: 1600px;
+  margin: auto;
+  align-items: start;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 7px 25px rgba(30,58,95,.08);
+  border: 1px solid #E1E9F0;
+}
+
+.card h2 {
+  margin: 0 0 9px;
+  color: var(--navy);
+  font-size: 21px;
+}
+
+.subtitle {
+  color: #697D91;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.diagram {
+  margin-top: 20px;
+  border: 2px solid #D9E9E7;
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: #F3FAF9;
+  background-image:
+    linear-gradient(rgba(38,166,154,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(38,166,154,.08) 1px, transparent 1px);
+  background-size: 25px 25px;
+}
+
+#geometry {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 600;
+}
+
+.circle-one {
+  fill: rgba(38,166,154,.11);
+  stroke: var(--teal);
+  stroke-width: 3.5;
+}
+
+.circle-two {
+  fill: rgba(68,123,200,.11);
+  stroke: var(--blue);
+  stroke-width: 3.5;
+}
+
+.triangle-fill {
+  fill: rgba(251,140,0,.18);
+}
+
+.triangle-side {
+  stroke-width: 5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.center-point {
+  fill: var(--navy);
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+.intersection-point {
+  fill: var(--orange);
+  stroke: white;
+  stroke-width: 3;
+}
+
+.svg-label {
+  font-size: 17px;
+  font-weight: 800;
+  fill: var(--navy);
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.svg-measure {
+  font-size: 15px;
+  font-weight: 800;
+  fill: #3B5069;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 17px;
+}
+
+button {
+  border: none;
+  padding: 11px 15px;
+  border-radius: 11px;
+  background: #EDF3F7;
+  color: var(--navy);
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+}
+
+button:hover {
+  background: #DDEBEF;
+}
+
+button.active {
+  background: var(--teal);
+  color: white;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.control {
+  margin-top: 27px;
+}
+
+.control-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.control label {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.value {
+  padding: 7px 11px;
+  border-radius: 9px;
+  background: #EDF3F7;
+  color: var(--navy);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 20px 0 7px;
+  cursor: pointer;
+  accent-color: var(--teal);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #8B9AA9;
+  font-size: 12px;
+}
+
+.info {
+  padding: 14px;
+  margin-top: 20px;
+  background: #F2F7FB;
+  border-radius: 12px;
+  color: #52687F;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.result {
+  background: var(--navy);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 22px;
+}
+
+.result small {
+  color: #BFD5E7;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.result h3 {
+  font-size: 23px;
+  margin: 10px 0;
+}
+
+.result p {
+  color: #E2EDF5;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.measurements {
+  margin-top: 20px;
+}
+
+.measure-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #E8EEF3;
+  padding: 13px 2px;
+  gap: 12px;
+}
+
+.measure-row strong {
+  color: var(--navy);
+}
+
+.measure-value {
+  font-weight: 900;
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.presets button {
+  padding: 13px 5px;
+  font-size: 12px;
+}
+
+.section-title {
+  margin-top: 28px;
+  font-size: 16px;
+  color: var(--navy);
+  font-weight: 900;
+}
+
+.warning {
+  color: #A15B00;
+  background: #FFF6E4;
+  padding: 12px;
+  border-radius: 11px;
+  font-size: 12px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 950px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  header {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .card { padding: 14px; }
+  .presets { grid-template-columns: 1fr; }
+  header h1 { font-size: 22px; }
+}
+
 </style>
 </head>
+
 <body>
-<main class="shell">
-<header class="heading"><div class="eyebrow">5. Sınıf Matematik · MAT.5.3.7</div><h1>Çemberlerden Üçgenlere</h1><p>İki noktada kesişen çemberleri değiştir, oluşan üçgenin kenar özelliklerini keşfet.</p></header>
-<div class="layout">
-<section class="card" aria-labelledby="drawingTitle">
-<div class="section-top"><h2 id="drawingTitle">Çemberler ve Oluşan Üçgen</h2><button class="btn" id="labelsButton" aria-pressed="true">Etiketleri gizle</button></div>
-<div class="graph">
-<svg id="diagram" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="İki noktada kesişen çemberler ve merkezleriyle kesişim noktasını birleştiren üçgen">
-<circle id="c1" fill="#26A69A" fill-opacity=".13" stroke="#26A69A" stroke-width="3.5"/>
-<circle id="c2" fill="#4D81CB" fill-opacity=".13" stroke="#4D81CB" stroke-width="3.5"/>
-<polygon id="triFill" fill="#FB8C00" fill-opacity=".15"/>
-<line id="edge1" stroke="#26A69A" stroke-width="5" stroke-linecap="round"/>
-<line id="edge2" stroke="#FB8C00" stroke-width="5" stroke-linecap="round"/>
-<line id="edge3" stroke="#1E3A5F" stroke-width="5" stroke-linecap="round"/>
-<circle id="otherK" r="5" fill="white" stroke="#FB8C00" stroke-width="2"/>
-<circle id="m1" r="6" fill="#1E3A5F" stroke="white" stroke-width="2.5"/>
-<circle id="m2" r="6" fill="#1E3A5F" stroke="white" stroke-width="2.5"/>
-<circle id="k" r="8" fill="#FB8C00" stroke="white" stroke-width="2.5"/>
-<g id="drawingLabels">
-<text id="m1L" class="shape-label" text-anchor="middle">M₁</text><text id="m2L" class="shape-label" text-anchor="middle">M₂</text><text id="kL" class="shape-label" text-anchor="middle">K</text><text id="kOtherL" class="subtle" text-anchor="middle">K′</text>
-<text id="r1L" class="subtle" text-anchor="middle">r₁</text><text id="r2L" class="subtle" text-anchor="middle">r₂</text><text id="dL" class="subtle" text-anchor="middle">d</text>
-</g>
-</svg>
-</div>
-<div class="legend"><span><i class="dot" style="background:#26A69A"></i>1. çember (C₁)</span><span><i class="dot" style="background:#4D81CB"></i>2. çember (C₂)</span><span><i class="dot" style="background:#FB8C00"></i>Kesişim noktası (K)</span></div>
-<div class="section-top" style="margin-bottom:12px"><span style="font-size:13px;font-weight:800;color:#50647a">Üçgen için kesişim noktası:</span><div class="toggle"><button class="btn active" id="upperButton" aria-pressed="true">Üstteki K</button><button class="btn" id="lowerButton" aria-pressed="false">Alttaki K</button></div></div>
-<div class="status" id="status" role="status">Çemberler iki noktada kesişiyor.</div>
-</section>
-<div class="controls">
-<section class="card" aria-labelledby="controlsTitle"><h2 id="controlsTitle">Çemberleri Ayarla</h2><p class="helper">Yarıçapları ve merkezler arası uzaklığı sürgülerle değiştir. Üçgen çizimi anında güncellenir.</p>
-<div class="field"><div class="fieldhead"><label for="r1">🟢 1. çemberin yarıçapı (r₁)</label><output id="r1Out" for="r1">120 birim</output></div><input id="r1" type="range" min="1" max="10" value="6" step="1"><div class="range-ends"><span>50</span><span>170</span></div></div>
-<div class="field"><div class="fieldhead"><label for="r2">🔵 2. çemberin yarıçapı (r₂)</label><output id="r2Out" for="r2">120 birim</output></div><input id="r2" type="range" min="1" max="10" value=6" step="1"><div class="range-ends"><span>50</span><span>170</span></div></div>
-<div class="field"><div class="fieldhead"><label for="d">↔️ Merkezler arası uzaklık (d)</label><output id="dOut" for="d">160 birim</output></div><input id="d" type="range" min="20" max="300" value="160" step="1"><div class="range-ends"><span id="minDistance">20</span><span id="maxDistance">232</span></div></div>
-<div class="info" id="limitInfo">Çemberlerin iki noktada kesişmesi için |r₁ − r₂| &lt; d &lt; r₁ + r₂ koşulu sağlanır. Sürgü bu koşulu korur.</div>
-<h3 style="margin:24px 0 11px;color:var(--navy);font-size:14px">Örnek üçgenler</h3><div class="presets"><button class="btn" data-preset="scalene">Çeşitkenar</button><button class="btn" data-preset="isosceles">İkizkenar</button><button class="btn" data-preset="equilateral">Eşkenar</button></div><button id="reset" class="btn" style="width:100%;margin-top:12px">↻ Başlangıç değerlerine dön</button>
-</section>
-<section class="card"><h2>Üçgenin Özellikleri</h2><div class="type-card"><small>Oluşan üçgen</small><strong id="triangleType">İkizkenar üçgen</strong><p id="triangleDescription">İki kenarın uzunluğu eşit.</p></div>
-<table class="table"><tbody><tr><td>M₁K (r₁)</td><td id="len1">120 birim</td></tr><tr><td>M₂K (r₂)</td><td id="len2">120 birim</td></tr><tr><td>M₁M₂ (d)</td><td id="len3">160 birim</td></tr></tbody></table>
-<p class="note">K noktası iki çemberin üzerinde olduğundan, M₁K ve M₂K uzunlukları ilgili çemberlerin yarıçaplarına eşittir. Yarıçaplar eşitse üçgenin en az iki kenarı eşittir.</p>
-</section>
-</div>
-</div>
-<footer class="footer">Matematiksel keşif aracı · MAT.5.3.7 · Çemberler ve üçgenlerin kenar özellikleri</footer>
+
+<header>
+  <h1>📐 Çemberlerden Üçgenlere</h1>
+  <p>İki çemberin kesişimiyle oluşan üçgenlerin kenar özelliklerini keşfet.</p>
+</header>
+
+<main class="layout">
+
+  <!-- SOL: ÇİZİM ALANI -->
+
+  <section class="card">
+    <h2>Geometri Laboratuvarı</h2>
+    <p class="subtitle">
+      İki çemberin merkezleri M₁, M₂ ve kesişim noktalarından
+      biri olan K birleştirilerek bir üçgen oluşturulur.
+    </p>
+
+    <div class="diagram">
+      <svg
+        id="geometry"
+        viewBox="0 0 800 600"
+        role="img"
+        aria-label="Kesişen iki çember ve merkezleri ile kesişim noktasının oluşturduğu üçgen"
+      >
+
+        <!-- Çemberler -->
+
+        <circle id="circle1" class="circle-one"/>
+        <circle id="circle2" class="circle-two"/>
+
+        <!-- Üçgen -->
+
+        <polygon id="triangle" class="triangle-fill"/>
+
+        <line id="side1" class="triangle-side" stroke="#26A69A"/>
+        <line id="side2" class="triangle-side" stroke="#FB8C00"/>
+        <line id="side3" class="triangle-side" stroke="#1E3A5F"/>
+
+        <!-- Noktalar -->
+
+        <circle id="M1" r="7" class="center-point"/>
+        <circle id="M2" r="7" class="center-point"/>
+        <circle id="K" r="9" class="intersection-point"/>
+        <circle id="Kother" r="5"
+          fill="white"
+          stroke="#FB8C00"
+          stroke-width="2"/>
+
+        <!-- Etiketler -->
+
+        <text id="labelM1" class="svg-label" text-anchor="middle">M₁</text>
+        <text id="labelM2" class="svg-label" text-anchor="middle">M₂</text>
+        <text id="labelK" class="svg-label" text-anchor="middle">K</text>
+        <text id="labelKother" class="svg-label" text-anchor="middle">K′</text>
+
+        <!-- Kenar ölçüleri -->
+
+        <text id="measure1" class="svg-measure" text-anchor="middle"></text>
+        <text id="measure2" class="svg-measure" text-anchor="middle"></text>
+        <text id="measure3" class="svg-measure" text-anchor="middle"></text>
+
+      </svg>
+    </div>
+
+    <div class="toolbar">
+      <button id="upperBtn" class="active">Üst Kesişim</button>
+      <button id="lowerBtn">Alt Kesişim</button>
+      <button id="labelBtn">Etiketleri Gizle</button>
+      <button id="resetBtn">↻ Sıfırla</button>
+    </div>
+
+    <div class="info" id="intersectionInfo">
+      Çemberler iki farklı noktada kesişmektedir.
+    </div>
+
+  </section>
+
+  <!-- SAĞ: KONTROL VE SONUÇ PANELİ -->
+
+  <aside class="card">
+
+    <h2>⚙️ Çember Ayarları</h2>
+
+    <p class="subtitle">
+      Çemberlerin yarıçaplarını ve merkezler arasındaki uzaklığı
+      değiştir. Çizim ve üçgenin kenarları anında güncellenir.
+    </p>
+
+    <div class="control">
+      <div class="control-heading">
+        <label for="r1">🟢 1. Çemberin Yarıçapı (r₁)</label>
+        <span class="value" id="r1Value">6 birim</span>
+      </div>
+
+      <input
+        type="range"
+        id="r1"
+        min="1"
+        max="10"
+        step="0.5"
+        value="6"
+      >
+
+      <div class="range-labels">
+        <span>1</span>
+        <span>10</span>
+      </div>
+    </div>
+
+    <div class="control">
+      <div class="control-heading">
+        <label for="r2">🔵 2. Çemberin Yarıçapı (r₂)</label>
+        <span class="value" id="r2Value">6 birim</span>
+      </div>
+
+      <input
+        type="range"
+        id="r2"
+        min="1"
+        max="10"
+        step="0.5"
+        value="6"
+      >
+
+      <div class="range-labels">
+        <span>1</span>
+        <span>10</span>
+      </div>
+    </div>
+
+    <div class="control">
+      <div class="control-heading">
+        <label for="d">↔️ Merkezler Arası Uzaklık (d)</label>
+        <span class="value" id="dValue">6 birim</span>
+      </div>
+
+      <input
+        type="range"
+        id="d"
+        min="0.5"
+        max="10"
+        step="0.5"
+        value="6"
+      >
+
+      <div class="range-labels">
+        <span id="dMinLabel">0.5</span>
+        <span id="dMaxLabel">10</span>
+      </div>
+    </div>
+
+    <div class="info" id="distanceInfo"></div>
+
+    <h3 class="section-title">📏 Üçgenin Kenar Uzunlukları</h3>
+
+    <div class="measurements">
+      <div class="measure-row">
+        <span>M₁K (r₁)</span>
+        <span class="measure-value" id="length1">6 birim</span>
+      </div>
+
+      <div class="measure-row">
+        <span>M₂K (r₂)</span>
+        <span class="measure-value" id="length2">6 birim</span>
+      </div>
+
+      <div class="measure-row">
+        <span>M₁M₂ (d)</span>
+        <span class="measure-value" id="length3">6 birim</span>
+      </div>
+    </div>
+
+    <div class="result">
+      <small>OLUŞAN ÜÇGEN</small>
+      <h3 id="triangleType">⭐ Eşkenar Üçgen</h3>
+      <p id="triangleDescription">
+        Üç kenarın uzunluğu birbirine eşittir.
+      </p>
+    </div>
+
+    <h3 class="section-title">⚡ Hazır Üçgen Örnekleri</h3>
+
+    <div class="presets">
+      <button id="scaleneBtn">🔺 Çeşitkenar</button>
+      <button id="isoscelesBtn">🔷 İkizkenar</button>
+      <button id="equilateralBtn">⭐ Eşkenar</button>
+    </div>
+
+    <div class="warning">
+      💡 <strong>Hatırla:</strong> K noktası her iki çember üzerinde
+      bulunduğundan M₁K ve M₂K uzunlukları çemberlerin yarıçaplarına eşittir.
+    </div>
+
+  </aside>
+
 </main>
+
 <script>
-'use strict';
+"use strict";
+
+/* ============================================
+   ÇEMBERLERDEN ÜÇGENLERE
+
+   Temel özellik:
+   Matematiksel değerler 1–10 aralığındadır.
+   SVG çizimi otomatik olarak ölçeklenir.
+
+   Böylece çemberler küçük görünmez.
+============================================ */
+
+const SVG_WIDTH = 800;
+const SVG_HEIGHT = 600;
+
 const $ = id => document.getElementById(id);
-const state = {r1:6,r2:6,d:7,upper:true,labels:true};
-function attr(id, data){const el=$(id);for(const [key,value] of Object.entries(data))el.setAttribute(key,String(value));}
-function point(id,x,y){attr(id,{cx:x,cy:y});}
-function label(id,x,y){attr(id,{x,y});}
-function line(id,x1,y1,x2,y2){attr(id,{x1,y1,x2,y2});}
-function typeOf(a,b,c){if(a===b&&b===c)return 'Eşkenar üçgen';if(a===b||a===c||b===c)return 'İkizkenar üçgen';return 'Çeşitkenar üçgen';}
-function validLimits(){return {min:Math.max(20,Math.abs(state.r1-state.r2)+1),max:Math.min(300,state.r1+state.r2-1)};}
-function update(){
- const limits=validLimits();state.d=Math.min(limits.max,Math.max(limits.min,state.d));
- $('d').min=limits.min;$('d').max=limits.max;
- for(const key of ['r1','r2','d']){$(key).value=state[key];$(key+'Out').textContent=state[key]+' birim';}
- $('minDistance').textContent=limits.min;$('maxDistance').textContent=limits.max;
- $('limitInfo').textContent=`İki noktada kesişme koşulu: |r₁ − r₂| < d < r₁ + r₂. Bu yarıçaplarla d, ${limits.min}–${limits.max} birim arasında ayarlanabilir.`;
- const {r1,r2,d}=state;
- const x1=340-d/2,x2=340+d/2,y=230;
- const a=(r1*r1-r2*r2+d*d)/(2*d);
- const h=Math.sqrt(Math.max(0,r1*r1-a*a));
- const xk=x1+a,yk=state.upper?y-h:y+h,yo=state.upper?y+h:y-h;
- attr('c1',{cx:x1,cy:y,r:r1});attr('c2',{cx:x2,cy:y,r:r2});
- attr('triFill',{points:`${x1},${y} ${x2},${y} ${xk},${yk}`});
- line('edge1',x1,y,xk,yk);line('edge2',x2,y,xk,yk);line('edge3',x1,y,x2,y);
- point('m1',x1,y);point('m2',x2,y);point('k',xk,yk);point('otherK',xk,yo);
- label('m1L',x1,y+24);label('m2L',x2,y+24);
- label('kL',xk,yk+(state.upper?-15:25));label('kOtherL',xk+22,yo+(state.upper?15:-12));
- label('r1L',(x1+xk)/2-16,(y+yk)/2-7);label('r2L',(x2+xk)/2+16,(y+yk)/2-7);
- label('dL',340,y+(state.upper?27:-12));
- const type=typeOf(r1,r2,d);
- $('triangleType').textContent=type;
- $('triangleDescription').textContent=type==='Eşkenar üçgen'?'Üç kenar uzunluğu birbirine eşittir.':type==='İkizkenar üçgen'?'İki kenar uzunluğu eşittir. Üçüncü kenar farklıdır.':'Üç kenar uzunluğu birbirinden farklıdır.';
- $('len1').textContent=r1+' birim';$('len2').textContent=r2+' birim';$('len3').textContent=d+' birim';
- const green=type==='Eşkenar üçgen';
- $('triFill').setAttribute('fill',green?'#2E9E5B':'#FB8C00');
- $('edge1').setAttribute('stroke',green?'#2E9E5B':'#26A69A');$('edge2').setAttribute('stroke',green?'#2E9E5B':'#FB8C00');$('edge3').setAttribute('stroke',green?'#2E9E5B':'#1E3A5F');
- $('status').textContent='✓ Çemberler iki farklı noktada kesişiyor. M₁, M₂ ve K birleştirildiğinde '+type.toLocaleLowerCase('tr')+' oluşur.';
- $('drawingLabels').style.display=state.labels?'':'none';
- $('upperButton').classList.toggle('active',state.upper);$('lowerButton').classList.toggle('active',!state.upper);
- $('upperButton').setAttribute('aria-pressed',state.upper);$('lowerButton').setAttribute('aria-pressed',!state.upper);
+
+const state = {
+  r1: 6,
+  r2: 6,
+  d: 6,
+  upper: true,
+  labels: true
+};
+
+/* ============================================
+   SAYI BİÇİMLENDİRME
+============================================ */
+
+function formatNumber(value) {
+  return Number(value.toFixed(2)).toLocaleString("tr-TR", {
+    maximumFractionDigits: 2
+  });
 }
-['r1','r2','d'].forEach(id=>$(id).addEventListener('input',event=>{state[id]=Number(event.target.value);update();}));
-$('upperButton').addEventListener('click',()=>{state.upper=true;update();});
-$('lowerButton').addEventListener('click',()=>{state.upper=false;update();});
-$('k').addEventListener('click',()=>{state.upper=!state.upper;update();});
-$('otherK').addEventListener('click',()=>{state.upper=!state.upper;update();});
-$('labelsButton').addEventListener('click',()=>{state.labels=!state.labels;$('labelsButton').textContent=state.labels?'Etiketleri gizle':'Etiketleri göster';$('labelsButton').setAttribute('aria-pressed',state.labels);update();});
-const presets={scalene:{r1:85,r2:120,d:155},isosceles:{r1:110,r2:110,d:165},equilateral:{r1:120,r2:120,d:120}};
-document.querySelectorAll('[data-preset]').forEach(button=>button.addEventListener('click',()=>{Object.assign(state,presets[button.dataset.preset]);update();}));
-$('reset').addEventListener('click',()=>{Object.assign(state,{r1:120,r2:120,d:160,upper:true});update();});
-update();
+
+/* ============================================
+   İKİ NOKTADA KESİŞME KOŞULU
+============================================ */
+
+function distanceLimits() {
+  /*
+    İki çemberin iki farklı noktada kesişmesi:
+
+    |r1 - r2| < d < r1 + r2
+
+    Sürgüler 0.5 adımlarla çalışır.
+  */
+
+  const min = Math.max(
+    0.5,
+    Math.abs(state.r1 - state.r2) + 0.5
+  );
+
+  const max = Math.min(
+    10,
+    state.r1 + state.r2 - 0.5
+  );
+
+  return { min, max };
+}
+
+function ensureIntersection() {
+  const limits = distanceLimits();
+
+  state.d = Math.max(
+    limits.min,
+    Math.min(state.d, limits.max)
+  );
+
+  return limits;
+}
+
+/* ============================================
+   ÜÇGEN TÜRÜ
+============================================ */
+
+function triangleType() {
+  const a = state.r1;
+  const b = state.r2;
+  const c = state.d;
+
+  if (a === b && b === c) {
+    return "equilateral";
+  }
+
+  if (a === b || a === c || b === c) {
+    return "isosceles";
+  }
+
+  return "scalene";
+}
+
+/* ============================================
+   ÇEMBERLERİN KESİŞİM HESABI
+============================================ */
+
+function geometryPoints() {
+  const r1 = state.r1;
+  const r2 = state.r2;
+  const d = state.d;
+
+  /*
+    Merkezler matematiksel koordinat sisteminde:
+
+    M1 = (0, 0)
+    M2 = (d, 0)
+
+    Kesişim noktasının M1'e göre yatay uzaklığı:
+  */
+
+  const a = (
+    r1 * r1 -
+    r2 * r2 +
+    d * d
+  ) / (2 * d);
+
+  const hSquared = Math.max(
+    0,
+    r1 * r1 - a * a
+  );
+
+  const h = Math.sqrt(hSquared);
+
+  return {
+    M1: { x: 0, y: 0 },
+    M2: { x: d, y: 0 },
+    upper: { x: a, y: -h },
+    lower: { x: a, y: h }
+  };
+}
+
+/* ============================================
+   OTOMATİK ÖLÇEKLENDİRME
+
+   ÖNEMLİ KISIM:
+
+   Çemberler 1–10 birim arasında olsa bile
+   ekrandaki çizim alanına mümkün olduğunca
+   büyük yerleştirilir.
+
+   Sabit scale = 20 kullanılmaz.
+
+   Ölçek yarıçaplara ve uzaklığa göre
+   her değişiklikte yeniden hesaplanır.
+============================================ */
+
+function getScreenTransform(points) {
+  const r1 = state.r1;
+  const r2 = state.r2;
+  const d = state.d;
+
+  /*
+    Çemberlerin matematiksel sınırları.
+  */
+
+  const left = Math.min(-r1, d - r2);
+  const right = Math.max(r1, d + r2);
+
+  const top = -Math.max(r1, r2);
+  const bottom = Math.max(r1, r2);
+
+  const geometryWidth = right - left;
+  const geometryHeight = bottom - top;
+
+  /*
+    Ekranın kenarlarında etiketler için
+    boşluk bırakılır.
+  */
+
+  const paddingX = 65;
+  const paddingY = 65;
+
+  const availableWidth = SVG_WIDTH - 2 * paddingX;
+  const availableHeight = SVG_HEIGHT - 2 * paddingY;
+
+  /*
+    Genişlik ve yükseklik için ayrı ölçekler.
+    Küçük olanı seçerek çemberlerin tamamını
+    çizim alanına sığdırıyoruz.
+  */
+
+  const scaleX = availableWidth / geometryWidth;
+  const scaleY = availableHeight / geometryHeight;
+
+  const scale = Math.min(scaleX, scaleY);
+
+  /*
+    Matematiksel şeklin merkezini
+    SVG'nin merkezine taşıyoruz.
+  */
+
+  const midX = (left + right) / 2;
+  const midY = (top + bottom) / 2;
+
+  function transform(point) {
+    return {
+      x: SVG_WIDTH / 2 + (point.x - midX) * scale,
+      y: SVG_HEIGHT / 2 + (point.y - midY) * scale
+    };
+  }
+
+  return { scale, transform };
+}
+
+/* ============================================
+   SVG ELEMANLARI
+============================================ */
+
+function setAttributes(id, attributes) {
+  const element = $(id);
+
+  for (const [key, value] of Object.entries(attributes)) {
+    element.setAttribute(key, value);
+  }
+}
+
+function setCircle(id, point, radius) {
+  setAttributes(id, {
+    cx: point.x,
+    cy: point.y,
+    r: radius
+  });
+}
+
+function setLine(id, p1, p2) {
+  setAttributes(id, {
+    x1: p1.x,
+    y1: p1.y,
+    x2: p2.x,
+    y2: p2.y
+  });
+}
+
+function setLabel(id, x, y, text) {
+  setAttributes(id, { x, y });
+  $(id).textContent = text;
+}
+
+/* ============================================
+   CANLI ÇİZİM
+============================================ */
+
+function updateDrawing() {
+  const limits = ensureIntersection();
+
+  const points = geometryPoints();
+
+  const screen = getScreenTransform(points);
+
+  const scale = screen.scale;
+  const transform = screen.transform;
+
+  const M1 = transform(points.M1);
+  const M2 = transform(points.M2);
+
+  const selectedK = state.upper
+    ? points.upper
+    : points.lower;
+
+  const otherK = state.upper
+    ? points.lower
+    : points.upper;
+
+  const K = transform(selectedK);
+  const Kother = transform(otherK);
+
+  /* Çemberleri çiz */
+
+  setCircle(
+    "circle1",
+    M1,
+    state.r1 * scale
+  );
+
+  setCircle(
+    "circle2",
+    M2,
+    state.r2 * scale
+  );
+
+  /* Üçgeni çiz */
+
+  setAttributes("triangle", {
+    points: `${M1.x},${M1.y} ${M2.x},${M2.y} ${K.x},${K.y}`
+  });
+
+  setLine("side1", M1, K);
+  setLine("side2", M2, K);
+  setLine("side3", M1, M2);
+
+  /* Merkez ve kesişim noktaları */
+
+  setCircle("M1", M1, 7);
+  setCircle("M2", M2, 7);
+
+  setCircle("K", K, 9);
+  setCircle("Kother", Kother, 5);
+
+  /* Nokta etiketleri */
+
+  const direction = state.upper ? -1 : 1;
+
+  setLabel(
+    "labelM1",
+    M1.x,
+    M1.y + 26,
+    "M₁"
+  );
+
+  setLabel(
+    "labelM2",
+    M2.x,
+    M2.y + 26,
+    "M₂"
+  );
+
+  setLabel(
+    "labelK",
+    K.x,
+    K.y + direction * 20,
+    "K"
+  );
+
+  setLabel(
+    "labelKother",
+    Kother.x + 20,
+    Kother.y,
+    "K′"
+  );
+
+  /* Kenarların orta noktalarında uzunluklar */
+
+  const midpoint1 = {
+    x: (M1.x + K.x) / 2 - 17,
+    y: (M1.y + K.y) / 2 - 8
+  };
+
+  const midpoint2 = {
+    x: (M2.x + K.x) / 2 + 17,
+    y: (M2.y + K.y) / 2 - 8
+  };
+
+  const midpoint3 = {
+    x: (M1.x + M2.x) / 2,
+    y: M1.y + (state.upper ? 44 : -20)
+  };
+
+  setLabel(
+    "measure1",
+    midpoint1.x,
+    midpoint1.y,
+    formatNumber(state.r1)
+  );
+
+  setLabel(
+    "measure2",
+    midpoint2.x,
+    midpoint2.y,
+    formatNumber(state.r2)
+  );
+
+  setLabel(
+    "measure3",
+    midpoint3.x,
+    midpoint3.y,
+    formatNumber(state.d)
+  );
+
+  /* Etiket görünürlüğü */
+
+  [
+    "labelM1",
+    "labelM2",
+    "labelK",
+    "labelKother",
+    "measure1",
+    "measure2",
+    "measure3"
+  ].forEach(id => {
+    $(id).style.display = state.labels
+      ? ""
+      : "none";
+  });
+
+  /* Sağ panel değerleri */
+
+  $("r1Value").textContent =
+    formatNumber(state.r1) + " birim";
+
+  $("r2Value").textContent =
+    formatNumber(state.r2) + " birim";
+
+  $("dValue").textContent =
+    formatNumber(state.d) + " birim";
+
+  $("length1").textContent =
+    formatNumber(state.r1) + " birim";
+
+  $("length2").textContent =
+    formatNumber(state.r2) + " birim";
+
+  $("length3").textContent =
+    formatNumber(state.d) + " birim";
+
+  /* Sürgülerin sınırlarını güncelle */
+
+  $("r1").value = state.r1;
+  $("r2").value = state.r2;
+
+  $("d").min = limits.min;
+  $("d").max = limits.max;
+  $("d").value = state.d;
+
+  $("dMinLabel").textContent =
+    formatNumber(limits.min);
+
+  $("dMaxLabel").textContent =
+    formatNumber(limits.max);
+
+  $("distanceInfo").textContent =
+    "İki noktada kesişme koşulu: |r₁ − r₂| < d < r₁ + r₂. " +
+    "Bu yarıçaplar için merkezler arası uzaklık " +
+    formatNumber(limits.min) + " ile " +
+    formatNumber(limits.max) +
+    " birim arasında ayarlanabilir.";
+
+  $("intersectionInfo").textContent =
+    "Çemberler iki farklı noktada kesişiyor. " +
+    "M₁K = " + formatNumber(state.r1) +
+    ", M₂K = " + formatNumber(state.r2) +
+    " ve M₁M₂ = " + formatNumber(state.d) + " birim.";
+
+  /* Üçgen türünü belirle */
+
+  updateTriangleType();
+}
+
+/* ============================================
+   ÜÇGEN TÜRÜ VE AÇIKLAMA
+============================================ */
+
+function updateTriangleType() {
+  const type = triangleType();
+
+  const heading = $("triangleType");
+  const description = $("triangleDescription");
+
+  if (type === "equilateral") {
+    heading.textContent = "⭐ Eşkenar Üçgen";
+
+    description.textContent =
+      "Üç kenar uzunluğu birbirine eşittir. " +
+      "M₁K = M₂K = M₁M₂.";
+
+    $("triangle").setAttribute(
+      "fill",
+      "rgba(46,158,91,.20)"
+    );
+
+    ["side1", "side2", "side3"].forEach(id => {
+      $(id).setAttribute("stroke", "#2E9E5B");
+    });
+  }
+
+  else if (type === "isosceles") {
+    heading.textContent = "🔷 İkizkenar Üçgen";
+
+    description.textContent =
+      "Tam olarak iki kenar uzunluğu eşittir. " +
+      "Ölçüm tablosundan hangi kenarların eşit olduğunu inceleyebilirsin.";
+
+    $("triangle").setAttribute(
+      "fill",
+      "rgba(251,140,0,.18)"
+    );
+
+    $("side1").setAttribute("stroke", "#26A69A");
+    $("side2").setAttribute("stroke", "#FB8C00");
+    $("side3").setAttribute("stroke", "#1E3A5F");
+  }
+
+  else {
+    heading.textContent = "🔺 Çeşitkenar Üçgen";
+
+    description.textContent =
+      "Üç kenarın uzunluğu birbirinden farklıdır.";
+
+    $("triangle").setAttribute(
+      "fill",
+      "rgba(251,140,0,.18)"
+    );
+
+    $("side1").setAttribute("stroke", "#26A69A");
+    $("side2").setAttribute("stroke", "#FB8C00");
+    $("side3").setAttribute("stroke", "#1E3A5F");
+  }
+}
+
+/* ============================================
+   SÜRGÜ OLAYLARI
+============================================ */
+
+$("r1").addEventListener("input", event => {
+  state.r1 = Number(event.target.value);
+  updateDrawing();
+});
+
+$("r2").addEventListener("input", event => {
+  state.r2 = Number(event.target.value);
+  updateDrawing();
+});
+
+$("d").addEventListener("input", event => {
+  state.d = Number(event.target.value);
+  updateDrawing();
+});
+
+/* ============================================
+   KESİŞİM NOKTASI SEÇİMİ
+============================================ */
+
+$("upperBtn").addEventListener("click", () => {
+  state.upper = true;
+
+  $("upperBtn").classList.add("active");
+  $("lowerBtn").classList.remove("active");
+
+  updateDrawing();
+});
+
+$("lowerBtn").addEventListener("click", () => {
+  state.upper = false;
+
+  $("lowerBtn").classList.add("active");
+  $("upperBtn").classList.remove("active");
+
+  updateDrawing();
+});
+
+/* ============================================
+   ETİKETLER
+============================================ */
+
+$("labelBtn").addEventListener("click", () => {
+  state.labels = !state.labels;
+
+  $("labelBtn").textContent = state.labels
+    ? "Etiketleri Gizle"
+    : "Etiketleri Göster";
+
+  updateDrawing();
+});
+
+/* ============================================
+   HAZIR ÜÇGENLER
+============================================ */
+
+function setPreset(r1, r2, d) {
+  state.r1 = r1;
+  state.r2 = r2;
+  state.d = d;
+
+  updateDrawing();
+}
+
+$("scaleneBtn").addEventListener("click", () => {
+  setPreset(4, 6, 7);
+});
+
+$("isoscelesBtn").addEventListener("click", () => {
+  setPreset(6, 6, 8);
+});
+
+$("equilateralBtn").addEventListener("click", () => {
+  setPreset(6, 6, 6);
+});
+
+/* ============================================
+   SIFIRLAMA
+============================================ */
+
+$("resetBtn").addEventListener("click", () => {
+  state.r1 = 6;
+  state.r2 = 6;
+  state.d = 6;
+  state.upper = true;
+  state.labels = true;
+
+  $("upperBtn").classList.add("active");
+  $("lowerBtn").classList.remove("active");
+
+  $("labelBtn").textContent = "Etiketleri Gizle";
+
+  updateDrawing();
+});
+
+/* ============================================
+   İLK ÇİZİM
+============================================ */
+
+updateDrawing();
+
 </script>
+
 </body>
 </html>
